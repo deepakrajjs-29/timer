@@ -4,52 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Countdown Timer</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-    }
-    .container {
-      text-align: center;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-    h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-    #countdown {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-    input, button {
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-      margin: 5px;
-      font-size: 16px;
-    }
-    input {
-      width: 150px;
-    }
-    button {
-      background-color: #4CAF50;
-      color: #fff;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
@@ -58,38 +13,6 @@
     <button onclick="startCountdown()">Start</button>
     <div id="countdown">00:00</div>
   </div>
-
-  <script>
-    let countdownInterval;
-
-    function startCountdown() {
-      clearInterval(countdownInterval); // Clear any previous timers
-      const minutesInput = document.getElementById("minutes").value;
-      let time = parseInt(minutesInput) * 60; // convert to seconds
-
-      if (isNaN(time) || time <= 0) {
-        alert("Please enter a valid number of minutes.");
-        return;
-      }
-
-      updateDisplay(time);
-
-      countdownInterval = setInterval(() => {
-        time--;
-        updateDisplay(time);
-
-        if (time <= 0) {
-          clearInterval(countdownInterval);
-          alert("Time's up!");
-        }
-      }, 1000);
-    }
-
-    function updateDisplay(seconds) {
-      const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
-      const secs = String(seconds % 60).padStart(2, '0');
-      document.getElementById("countdown").textContent = `${mins}:${secs}`;
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
